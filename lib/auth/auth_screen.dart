@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_demo/auth/auth_service.dart';
-import 'package:firebase_auth_demo/auth/auth_exceptoin.dart';
+import 'package:firebase_auth_demo/auth/authj_exceptoin.dart';
 import 'package:firebase_auth_demo/widget/snackbar_widget.dart';
 import 'package:flutter/material.dart';
 

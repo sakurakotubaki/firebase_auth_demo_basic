@@ -25,12 +25,12 @@ class AuthService {
     try {
       // Validate email format (basic check)
       if (!_isValidEmail(email)) {
-        throw AuthjExceptoin.invalidEmail;
+        throw AuthException.invalidEmail;
       }
 
       // Validate password length
       if (password.length < 6) {
-        throw AuthjExceptoin.weakPassword;
+        throw AuthException.weakPassword;
       }
 
       // Attempt to create user
@@ -43,7 +43,7 @@ class AuthService {
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
-        throw AuthjExceptoin.emailAlreadyInUse;
+        throw AuthException.emailAlreadyInUse;
       }
       rethrow;
     }
@@ -57,7 +57,7 @@ class AuthService {
     try {
       // Validate email format (basic check)
       if (!_isValidEmail(email)) {
-        throw AuthjExceptoin.invalidEmail;
+        throw AuthException.invalidEmail;
       }
 
       // Attempt to sign in
@@ -69,7 +69,7 @@ class AuthService {
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-        throw AuthjExceptoin.invalidCredentials;
+        throw AuthException.invalidCredentials;
       }
       rethrow;
     }
