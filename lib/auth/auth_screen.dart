@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_demo/auth/auth_service.dart';
-import 'package:firebase_auth_demo/auth/authj_exceptoin.dart';
+import 'package:firebase_auth_demo/auth/auth_exceptoin.dart';
 import 'package:firebase_auth_demo/widget/snackbar_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -126,16 +126,18 @@ class _AuthScreenState extends State<AuthScreen> with SnackbarWidget {
                 const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: _isLoading ? null : _submitForm,
-                  child: _isLoading 
-                    ? const CircularProgressIndicator() 
-                    : Text(_isLogin ? 'ログイン' : '新規登録'),
+                  child: _isLoading
+                      ? const CircularProgressIndicator()
+                      : Text(_isLogin ? 'ログイン' : '新規登録'),
                 ),
                 TextButton(
-                  onPressed: _isLoading ? null : () {
-                    setState(() {
-                      _isLogin = !_isLogin;
-                    });
-                  },
+                  onPressed: _isLoading
+                      ? null
+                      : () {
+                          setState(() {
+                            _isLogin = !_isLogin;
+                          });
+                        },
                   child: Text(_isLogin ? '新規登録はこちら' : 'ログインはこちら'),
                 ),
               ],
@@ -162,7 +164,7 @@ class WelcomeScreen extends StatelessWidget with SnackbarWidget {
             icon: const Icon(Icons.logout),
             onPressed: () async {
               await AuthService.instance.signOut();
-              
+
               // Use Navigator.of(context) safely
               if (context.mounted) {
                 Navigator.of(context).pushReplacement(
